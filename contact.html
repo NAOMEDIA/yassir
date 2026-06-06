@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Showroom & Contact — Yassir Costu'Men</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── CONTACT PAGE ── */
+.contact-wrap { background:var(--dark); padding:100px 60px; }
+.contact-grid { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1.6fr; gap:80px; align-items:start; }
+
+/* Left: Contact info */
+.contact-info h2 { font-family:'Playfair Display',serif; font-size:clamp(26px,3.5vw,46px); font-weight:500; color:var(--cream); line-height:1.25; margin-bottom:8px; }
+.contact-info h2 em { font-style:italic; color:var(--gold); }
+.contact-info > p { font-size:16px; font-weight:300; color:var(--cream-dim); line-height:1.85; margin-bottom:0; }
+.contact-cards { display:flex; flex-direction:column; gap:12px; margin-bottom:36px; }
+.contact-card { display:flex; gap:16px; align-items:flex-start; background:var(--surface); padding:18px 20px; border:1px solid rgba(201,169,110,.1); transition:border-color .3s; }
+.contact-card:hover { border-color:rgba(201,169,110,.35); }
+.c-icon { font-size:20px; flex-shrink:0; margin-top:2px; }
+.c-body strong { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:4px; }
+.c-body a, .c-body span { font-size:15px; font-weight:300; color:var(--cream-dim); transition:color .2s; display:block; line-height:1.6; }
+.c-body a:hover { color:var(--gold); }
+
+/* Social */
+.social-row { display:flex; gap:10px; margin-top:8px; }
+.social-btn { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:500; letter-spacing:2px; text-transform:uppercase; padding:10px 18px; border:1px solid rgba(201,169,110,.22); color:var(--cream-dim); transition:all .2s; }
+.social-btn:hover { border-color:var(--gold); color:var(--gold); background:rgba(201,169,110,.06); }
+
+/* Right: Map + store photos */
+.contact-visual {}
+.map-frame { height:440px; overflow:hidden; border:1px solid rgba(201,169,110,.18); margin-bottom:3px; transition:border-color .3s; }
+.map-frame:hover { border-color:rgba(201,169,110,.4); }
+.map-frame iframe { width:100%; height:100%; border:none; filter:grayscale(85%) brightness(.6) contrast(1.15); transition:filter .4s; }
+.map-frame:hover iframe { filter:grayscale(30%) brightness(.78); }
+.store-photos { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
+.store-photo { height:200px; overflow:hidden; }
+.store-photo img { filter:brightness(.65) saturate(.8); transition:transform .6s, filter .35s; }
+.store-photo:hover img { transform:scale(1.06); filter:brightness(.82) saturate(1); }
+
+/* Hours */
+.hours-block { background:var(--surface); padding:20px 24px; margin-top:16px; border:1px solid rgba(201,169,110,.1); }
+.hours-block h4 { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+.hours-row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid rgba(201,169,110,.07); }
+.hours-row:last-child { border-bottom:none; }
+.hours-row span { font-size:14px; font-weight:300; color:var(--cream-dim); }
+.hours-row .time { color:var(--cream); font-weight:400; }
+
+/* Instagram section */
+.ig-section { background:var(--black); padding:90px 60px; text-align:center; }
+.ig-ornament { display:flex; align-items:center; gap:14px; max-width:440px; margin:0 auto 18px; }
+.ig-ornament::before, .ig-ornament::after { content:''; flex:1; height:1px; background:linear-gradient(90deg, transparent, rgba(201,169,110,.35), transparent); }
+.ig-ornament span { font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); white-space:nowrap; }
+.ig-section h2 { font-family:'Playfair Display',serif; font-size:clamp(22px,3vw,40px); font-weight:500; color:var(--cream); margin-bottom:48px; line-height:1.25; }
+.ig-section h2 em { font-style:italic; color:var(--gold); }
+.ig-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:4px; max-width:960px; margin:0 auto 40px; }
+.ig-tile { aspect-ratio:1; overflow:hidden; position:relative; cursor:pointer; }
+.ig-tile img { filter:brightness(.55) saturate(.6); transition:transform .55s, filter .35s; }
+.ig-tile:hover img { transform:scale(1.07); filter:brightness(.8) saturate(1.1); }
+.ig-hover { position:absolute; inset:0; background:rgba(201,169,110,.07); display:flex; align-items:center; justify-content:center; font-size:24px; opacity:0; transition:opacity .3s; }
+.ig-tile:hover .ig-hover { opacity:1; }
+
+@media (max-width:900px) {
+  .contact-wrap { padding:70px 22px; }
+  .contact-grid { grid-template-columns:1fr; gap:48px; }
+  .map-frame { height:320px; }
+  .ig-section { padding:70px 22px; }
+  .ig-grid { grid-template-columns:repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Yassir Costu'Men<small>Costumes de Luxe · Casablanca</small></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="products.html">Collections</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html" class="active">Showroom</a></li>
+  </ul>
+  <a href="https://wa.me/212666061013" class="nav-reserve" target="_blank">Réserver →</a>
+  <div class="nav-burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg" style="background:url('./images/store-front.jpg') center/cover no-repeat;"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <span class="tag">Casablanca, Maroc</span>
+    <h1>Notre <em>Showroom</em></h1>
+  </div>
+</div>
+
+<!-- CONTACT + MAP -->
+<section class="contact-wrap">
+  <div class="contact-grid">
+
+    <!-- Left: Info -->
+    <div class="contact-info">
+      <span class="tag reveal">Nous Trouver</span>
+      <h2 class="reveal">Venez nous <em>rendre visite</em></h2>
+      <div class="divider reveal"></div>
+      <p class="reveal" style="margin-bottom:32px;">Notre showroom est ouvert sur rendez-vous pour vous offrir une expérience d'essayage exclusive et personnalisée.</p>
+
+      <div class="contact-cards reveal">
+        <div class="contact-card">
+          <span class="c-icon">📍</span>
+          <div class="c-body">
+            <strong>Adresse</strong>
+            <span>Casablanca, Maroc</span>
+            <span>Yassir Costu'Men</span>
+          </div>
+        </div>
+        <a href="https://wa.me/212666061013" class="contact-card" target="_blank">
+          <span class="c-icon">📱</span>
+          <div class="c-body">
+            <strong>WhatsApp & Téléphone</strong>
+            <a href="https://wa.me/212666061013">+212 666 061 013</a>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/yassir_costumen" class="contact-card" target="_blank">
+          <span class="c-icon">📸</span>
+          <div class="c-body">
+            <strong>Instagram</strong>
+            <a>@yassir_costumen</a>
+          </div>
+        </a>
+        <div class="contact-card">
+          <span class="c-icon">🕐</span>
+          <div class="c-body">
+            <strong>Disponibilité</strong>
+            <span>Sur rendez-vous uniquement</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hours-block reveal">
+        <h4>Horaires d'Ouverture</h4>
+        <div class="hours-row"><span>Lundi — Vendredi</span><span class="time">10h00 — 20h00</span></div>
+        <div class="hours-row"><span>Samedi</span><span class="time">10h00 — 22h00</span></div>
+        <div class="hours-row"><span>Dimanche</span><span class="time">Sur rendez-vous</span></div>
+      </div>
+
+      <div class="social-row reveal" style="margin-top:28px;">
+        <a href="https://wa.me/212666061013?text=Bonjour, je voudrais prendre rendez-vous" class="social-btn" target="_blank">WhatsApp</a>
+        <a href="https://www.instagram.com/yassir_costumen" class="social-btn" target="_blank">Instagram</a>
+      </div>
+    </div>
+
+    <!-- Right: Map + Photos -->
+    <div class="contact-visual reveal">
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d270003.8712954635!2d-7.5122858!3d33.5999366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cb002a0749b1%3A0x545ceadc1730250f!2sYassir%20costu'Men!5e1!3m2!1sen!2sma!4v1780786127689!5m2!1sen!2sma"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Yassir Costu'Men — Casablanca">
+        </iframe>
+      </div>
+      <div class="store-photos">
+        <div class="store-photo"><img src="./images/store-front.jpg" alt="Boutique Yassir Costu'Men Extérieur"></div>
+        <div class="store-photo"><img src="./images/store-interior.jpg" alt="Boutique Yassir Costu'Men Intérieur"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="ig-section">
+  <div class="ig-ornament"><span>✦ Instagram Spotlight ✦</span></div>
+  <h2 class="reveal">Suivez nos <em>dernières créations</em></h2>
+  <div class="ig-grid">
+    <div class="ig-tile"><img src="./images/01.jpg" alt="Instagram 1"><div class="ig-hover">♡</div></div>
+    <div class="ig-tile"><img src="./images/03.jpg" alt="Instagram 2"><div class="ig-hover">♡</div></div>
+    <div class="ig-tile"><img src="./images/05.jpg" alt="Instagram 3"><div class="ig-hover">♡</div></div>
+    <div class="ig-tile"><img src="./images/07.jpg" alt="Instagram 4"><div class="ig-hover">♡</div></div>
+  </div>
+  <a href="https://www.instagram.com/yassir_costumen" target="_blank" class="btn-ghost" style="display:inline-flex;margin:0 auto;">Suivre @yassir_costumen →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">Yassir Costu'Men<small>Costumes de Luxe · Maroc</small></div>
+        <p>L'art du costume masculin marocain. Chaque pièce est une ode à l'élégance, confectionnée avec passion.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="products.html">Collections</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Showroom & Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a>Casablanca, Maroc</a></li>
+          <li><a href="https://wa.me/212666061013" target="_blank">+212 666 061 013</a></li>
+          <li><a href="https://www.instagram.com/yassir_costumen" target="_blank">@yassir_costumen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Yassir Costu'Men. Tous droits réservés.</p>
+      <p>Casablanca, Maroc</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50), {passive:true});
+const burger = document.getElementById('burger');
+let open = false;
+burger.addEventListener('click', () => {
+  open = !open;
+  const links = document.querySelector('.nav-links');
+  links.style.cssText = open ? 'display:flex;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:rgba(7,6,10,.97);padding:22px 28px;gap:18px;border-bottom:1px solid rgba(201,169,110,.12);backdrop-filter:blur(14px);' : 'display:none;';
+});
+const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);} }), {threshold:.08});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

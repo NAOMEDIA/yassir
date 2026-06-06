@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yassir Costu'Men — L'Excellence du Costume de Mariage</title>
+<meta name="description" content="Boutique de costumes de luxe pour hommes à Casablanca. Location et vente de smokings, costumes 3 pièces et vestes croisées pour mariages et événements.">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── INDEX PAGE ── */
+
+/* Hero */
+#hero { height:100vh; min-height:680px; position:relative; display:flex; align-items:flex-end; }
+.hero-bg { position:absolute; inset:0; background:url('./images/store-front.jpg') center/cover no-repeat; filter:brightness(.3); transform:scale(1.06); animation:heroZoom 12s ease forwards; }
+@keyframes heroZoom { to { transform:scale(1); } }
+.hero-vignette { position:absolute; inset:0; background:linear-gradient(to top, var(--black) 0%, rgba(7,6,10,.45) 42%, transparent 68%); }
+.hero-inner { position:relative; z-index:2; padding:0 60px 90px; max-width:780px; }
+.hero-inner .tag { animation:fadeUp .7s .2s both; }
+.hero-inner h1 { font-family:'Playfair Display',serif; font-size:clamp(40px,6vw,82px); font-weight:500; line-height:1.12; color:var(--cream); margin-bottom:24px; animation:fadeUp .7s .36s both; }
+.hero-inner h1 em { font-style:italic; color:var(--gold); }
+.hero-inner p { font-size:18px; font-weight:300; line-height:1.85; color:var(--cream-dim); max-width:500px; margin-bottom:44px; animation:fadeUp .7s .52s both; }
+.hero-actions { display:flex; gap:20px; align-items:center; flex-wrap:wrap; animation:fadeUp .7s .66s both; }
+
+/* Featured Section */
+.featured { background:var(--dark); padding:110px 60px; }
+.section-header { text-align:center; margin-bottom:68px; }
+.section-header h2 { font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,56px); font-weight:500; color:var(--cream); line-height:1.2; }
+.section-header h2 em { font-style:italic; color:var(--gold); }
+.section-header .sub { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:300; letter-spacing:3px; color:var(--muted); margin-top:12px; text-transform:uppercase; }
+.featured-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; max-width:1160px; margin:0 auto 52px; }
+.product-card { position:relative; aspect-ratio:3/4; overflow:hidden; background:var(--surface); display:block; }
+.product-card img { filter:brightness(.65) saturate(.8); transition:transform .65s ease, filter .4s; }
+.product-card:hover img { transform:scale(1.08); filter:brightness(.82) saturate(1.05); }
+.product-vignette { position:absolute; inset:0; background:linear-gradient(to top, rgba(7,6,10,.95) 0%, transparent 55%); pointer-events:none; }
+.product-meta { position:absolute; bottom:0; left:0; right:0; padding:22px 20px; }
+.product-meta .badge { font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:5px; }
+.product-meta .name { font-family:'Playfair Display',serif; font-size:17px; font-weight:500; color:var(--cream); display:block; margin-bottom:10px; line-height:1.3; }
+.product-meta .reserve { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:var(--gold); display:inline-flex; align-items:center; gap:6px; opacity:0; transform:translateY(6px); transition:opacity .3s, transform .3s; }
+.product-card:hover .reserve { opacity:1; transform:translateY(0); }
+.featured-cta { text-align:center; }
+
+/* Heritage / About */
+#heritage { display:grid; grid-template-columns:1fr 1fr; min-height:80vh; }
+.heritage-photo { position:relative; overflow:hidden; min-height:500px; }
+.heritage-photo img { filter:brightness(.6); transition:transform .9s ease; }
+.heritage-photo:hover img { transform:scale(1.04); }
+.heritage-text { background:var(--surface); padding:100px 76px; display:flex; flex-direction:column; justify-content:center; }
+.heritage-text h2 { font-family:'Playfair Display',serif; font-size:clamp(26px,3vw,46px); font-weight:500; line-height:1.25; color:var(--cream); margin-bottom:8px; }
+.heritage-text h2 em { font-style:italic; color:var(--gold); }
+.heritage-text p { font-size:17px; font-weight:300; line-height:1.9; color:var(--cream-dim); margin-bottom:16px; }
+
+/* Stats */
+.stats-row { display:flex; gap:0; margin:32px 0; border:1px solid rgba(201,169,110,.14); }
+.stat { flex:1; padding:22px 20px; text-align:center; border-right:1px solid rgba(201,169,110,.12); }
+.stat:last-child { border-right:none; }
+.stat .num { font-family:'Playfair Display',serif; font-size:32px; font-weight:600; color:var(--gold); display:block; }
+.stat .lbl { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-top:4px; display:block; }
+
+/* CTA Section */
+#cta-section { position:relative; min-height:60vh; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
+.cta-bg { position:absolute; inset:0; background:url('./images/03.jpg') center/cover no-repeat; filter:brightness(.2); }
+.cta-overlay { position:absolute; inset:0; background:rgba(7,6,10,.55); }
+.cta-inner { position:relative; z-index:2; max-width:680px; padding:80px 40px; }
+.cta-inner h2 { font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,58px); font-weight:500; line-height:1.2; color:var(--cream); margin-bottom:20px; }
+.cta-inner h2 em { font-style:italic; color:var(--gold); }
+.cta-inner p { font-size:17px; font-weight:300; line-height:1.85; color:var(--cream-dim); margin-bottom:44px; }
+.cta-btns { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; }
+
+/* Responsive index */
+@media (max-width:900px) {
+  .hero-inner { padding:0 22px 68px; }
+  .featured { padding:80px 22px; }
+  .featured-grid { grid-template-columns:repeat(2,1fr); }
+  #heritage { grid-template-columns:1fr; }
+  .heritage-photo { min-height:360px; order:-1; }
+  .heritage-text { padding:60px 28px; }
+  .cta-inner { padding:60px 22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Yassir Costu'Men<small>Costumes de Luxe · Casablanca</small></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Accueil</a></li>
+    <li><a href="products.html">Collections</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html">Showroom</a></li>
+  </ul>
+  <a href="https://wa.me/212666061013" class="nav-reserve" target="_blank">Réserver →</a>
+  <div class="nav-burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-inner">
+    <span class="tag">Casablanca · Maroc</span>
+    <h1>L'Excellence du<br><em>Costume Masculin</em></h1>
+    <p>Location et vente de costumes de luxe, smokings et vestes croisées pour sublimer votre jour J au Maroc.</p>
+    <div class="hero-actions">
+      <a href="products.html" class="btn-gold">Voir la Collection</a>
+      <a href="https://wa.me/212666061013" class="btn-ghost" target="_blank">Réserver un essayage →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED COLLECTION -->
+<section class="featured">
+  <div class="section-header reveal">
+    <span class="tag" style="display:block;text-align:center;">Sélection</span>
+    <h2>Notre <em>Collection</em></h2>
+    <p class="sub">Smokings · Costumes 3 Pièces · Vestes Croisées</p>
+  </div>
+
+  <div class="featured-grid">
+    <a href="products.html" class="product-card">
+      <img src="./images/01.jpg" alt="Costume Bleu Marine Slim Fit">
+      <div class="product-vignette"></div>
+      <div class="product-meta">
+        <span class="badge">Slim Fit</span>
+        <span class="name">Costume Bleu Marine</span>
+        <span class="reserve">Réserver ce costume →</span>
+      </div>
+    </a>
+    <a href="products.html" class="product-card">
+      <img src="./images/05.jpg" alt="Smoking Blanc Croisé">
+      <div class="product-vignette"></div>
+      <div class="product-meta">
+        <span class="badge">Exclusif</span>
+        <span class="name">Smoking Blanc Croisé</span>
+        <span class="reserve">Réserver ce costume →</span>
+      </div>
+    </a>
+    <a href="products.html" class="product-card">
+      <img src="./images/06.jpg" alt="Veste Croisée Vert Sauge">
+      <div class="product-vignette"></div>
+      <div class="product-meta">
+        <span class="badge">Boutons Dorés</span>
+        <span class="name">Veste Vert Sauge</span>
+        <span class="reserve">Réserver ce costume →</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="featured-cta reveal">
+    <a href="products.html" class="btn-gold">Voir les 10 Costumes</a>
+  </div>
+</section>
+
+<!-- HERITAGE -->
+<section id="heritage">
+  <div class="heritage-photo">
+    <img src="./images/store-interior.jpg" alt="Boutique Yassir Costu'Men">
+  </div>
+  <div class="heritage-text">
+    <span class="tag reveal">Notre Histoire</span>
+    <h2 class="reveal">Un savoir-faire<br><em>d'exception</em></h2>
+    <div class="divider reveal"></div>
+    <p class="reveal">Yassir Costu'Men incarne l'élégance masculine marocaine dans toute sa splendeur. Chaque costume est sélectionné avec une attention méticuleuse aux détails, mêlant coupes contemporaines et finitions impeccables.</p>
+    <p class="reveal">De la première consultation à l'essayage final, nous vous guidons vers la tenue parfaite pour votre mariage, cérémonie ou événement d'exception.</p>
+    <div class="stats-row reveal">
+      <div class="stat"><span class="num">10+</span><span class="lbl">Modèles</span></div>
+      <div class="stat"><span class="num">100%</span><span class="lbl">Sur Mesure</span></div>
+      <div class="stat"><span class="num">★★★★★</span><span class="lbl">Satisfaction</span></div>
+    </div>
+    <a href="services.html" class="btn-gold reveal">Nos Services</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta-section">
+  <div class="cta-bg"></div>
+  <div class="cta-overlay"></div>
+  <div class="cta-inner">
+    <span class="tag" style="display:block;text-align:center;">Essayage Privé</span>
+    <h2 class="reveal">Votre mariage mérite <em>l'excellence</em></h2>
+    <p class="reveal">Réservez votre rendez-vous dans notre showroom à Casablanca pour une expérience personnalisée.</p>
+    <div class="cta-btns reveal">
+      <a href="https://wa.me/212666061013" class="btn-gold" target="_blank">Réserver sur WhatsApp</a>
+      <a href="contact.html" class="btn-ghost">Voir le Showroom →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">Yassir Costu'Men<small>Costumes de Luxe · Maroc</small></div>
+        <p>L'art du costume masculin marocain. Chaque pièce est une ode à l'élégance, confectionnée avec passion.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="products.html">Collections</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Showroom & Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a>Casablanca, Maroc</a></li>
+          <li><a href="https://wa.me/212666061013" target="_blank">+212 666 061 013</a></li>
+          <li><a href="https://www.instagram.com/yassir_costumen" target="_blank">@yassir_costumen</a></li>
+          <li><a href="contact.html">Prendre RDV</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Yassir Costu'Men. Tous droits réservés.</p>
+      <p>Casablanca, Maroc</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50), {passive:true});
+const burger = document.getElementById('burger');
+let open = false;
+burger.addEventListener('click', () => {
+  open = !open;
+  const links = document.querySelector('.nav-links');
+  links.style.cssText = open ? 'display:flex;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:rgba(7,6,10,.97);padding:22px 28px;gap:18px;border-bottom:1px solid rgba(201,169,110,.12);backdrop-filter:blur(14px);' : 'display:none;';
+});
+const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);} }), {threshold:.1});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
